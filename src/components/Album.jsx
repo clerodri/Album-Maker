@@ -2,6 +2,7 @@ import { useDropzone } from "react-dropzone";
 import { useContext } from "react";
 import { AlbumContext } from "../AlbumContext";
 import { Link } from "react-router-dom";
+import Form from "../pages/Form";
 export function Album() {
   const { state, dispatch } = useContext(AlbumContext);
 
@@ -9,15 +10,17 @@ export function Album() {
     accept: "image/*",
     noClick: state.album.length > 0,
     onDrop: (acceptedFiles) => {
-      const filesWithPreview = acceptedFiles.map((file) => ({
-        ...file,
-        preview: URL.createObjectURL(file),
-      }));
-      console.log(filesWithPreview);
+      console.log(acceptedFiles);
       dispatch({ type: "ADD_IMAGES", payload: acceptedFiles });
     },
   });
+
+  const onDragStart = (index) => {
+    console.log("Dragging:", index);
+    dispatch({ type: "SET_DRAGGED_INDEX", payload: index });
+  };
   const onDrop = (dropIndex) => {
+    console.log("Dropping on:", dropIndex);
     dispatch({
       type: "MOVE_IMAGE",
       payload: { draggedIdx: state.draggedIdx, dropIndex },
@@ -29,22 +32,21 @@ export function Album() {
       <div className="navBar">
         <h1 className="name-app">Album Maker</h1>
         <button>
-          <Link>NEXT</Link>
+          <Link>Continuar</Link>
         </button>
       </div>
       <input {...getInputProps()} />
-      <ImagesList handleDrop={onDrop} />
+      <ImagesList handleDragStart={onDragStart} handleDrop={onDrop} />
     </div>
   );
 }
 
-function ImageItem({ file, idx, onDrop }) {
-  const { dispatch } = useContext(AlbumContext);
+function ImageItem({ file, idx, onDragStart, onDrop }) {
   return (
     <div
       key={idx}
       draggable="true"
-      onDragStart={() => dispatch({ type: "SET_DRAGGED_INDEX", payload: idx })}
+      onDragStart={() => onDragStart(idx)}
       onDrop={() => onDrop(idx)}
       onDragOver={(e) => e.preventDefault()}
     >
@@ -60,8 +62,8 @@ function ImageItem({ file, idx, onDrop }) {
   );
 }
 
-function ImagesList({ handleDrop }) {
-  const { state, dispatch } = useContext(AlbumContext);
+function ImagesList({ handleDragStart, handleDrop }) {
+  const { state } = useContext(AlbumContext);
 
   if (!state.album.length) {
     return <div>No images found. Please upload some pictures.</div>;
@@ -73,9 +75,7 @@ function ImagesList({ handleDrop }) {
           key={index}
           file={file}
           idx={index}
-          onDragStart={() =>
-            dispatch({ type: "SET_DRAGGED_INDEX", payload: index })
-          }
+          onDragStart={() => handleDragStart(index)}
           onDrop={() => handleDrop(index)}
         />
       ))}

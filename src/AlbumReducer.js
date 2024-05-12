@@ -21,27 +21,28 @@ const albumReducer = (state, action) => {
 
     case "MOVE_IMAGE":
       const { draggedIdx, dropIndex } = action.payload;
-      if (draggedIdx === null || draggedIdx === dropIndex) return state;
+      console.log("Dragged Index:", draggedIdx);
+      console.log("Drop Index:", dropIndex);
+
+      if (draggedIdx === null || draggedIdx === dropIndex) return state; // No operation needed if indices are the same
+
+      // Clone the current album to a new array to maintain immutability
       const newAlbum = [...state.album];
-      const draggedItem = newAlbum[draggedIdx];
-      newAlbum.splice(draggedIdx, 1);
-      newAlbum.splice(dropIndex, 0, draggedItem);
+
+      // Perform the swap
+      const temp = newAlbum[draggedIdx];
+      newAlbum[draggedIdx] = newAlbum[dropIndex];
+      newAlbum[dropIndex] = temp;
       return {
         ...state,
         album: newAlbum,
-        draggedIdx: null,
+        draggedIdx: null, // Resetting the dragged index
       };
 
     case "SET_DRAGGED_INDEX":
       return {
         ...state,
         draggedIdx: action.payload,
-      };
-
-    case "TOGGLE_FORM":
-      return {
-        ...state,
-        showForm: !state.showForm,
       };
 
     default:
