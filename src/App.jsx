@@ -5,9 +5,8 @@ import { AlbumProvider } from "./AlbumContext";
 
 function App() {
   return (
-    <div>
+    <div className="root">
       <AlbumProvider>
-        <h1>Photo Organizer</h1>
         <Album />
       </AlbumProvider>
     </div>

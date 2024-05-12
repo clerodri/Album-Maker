@@ -1,8 +1,7 @@
 import { useDropzone } from "react-dropzone";
-import UserForm from "./UserForm";
 import { useContext } from "react";
 import { AlbumContext } from "../AlbumContext";
-
+import { Link } from "react-router-dom";
 export function Album() {
   const { state, dispatch } = useContext(AlbumContext);
 
@@ -26,15 +25,15 @@ export function Album() {
   };
 
   return (
-    <div className="main_layout">
-      <div {...getRootProps()} className="grid-container">
-        <input {...getInputProps()} />
-        <ImagesList handleDrop={onDrop} />
+    <div className="layout" {...getRootProps()}>
+      <div className="navBar">
+        <h1 className="name-app">Album Maker</h1>
+        <button>
+          <Link>NEXT</Link>
+        </button>
       </div>
-      <button onClick={() => dispatch({ type: "TOGGLE_FORM" })}>
-        {state.showForm ? "Hide Form" : "Show Form"}
-      </button>
-      {state.showForm && <UserForm />}
+      <input {...getInputProps()} />
+      <ImagesList handleDrop={onDrop} />
     </div>
   );
 }
@@ -43,7 +42,6 @@ function ImageItem({ file, idx, onDrop }) {
   const { dispatch } = useContext(AlbumContext);
   return (
     <div
-      className="image-square"
       key={idx}
       draggable="true"
       onDragStart={() => dispatch({ type: "SET_DRAGGED_INDEX", payload: idx })}
@@ -69,7 +67,7 @@ function ImagesList({ handleDrop }) {
     return <div>No images found. Please upload some pictures.</div>;
   }
   return (
-    <div className="layout">
+    <div className="grid-container">
       {state.album.map((file, index) => (
         <ImageItem
           key={index}
