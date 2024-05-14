@@ -44,6 +44,9 @@ const albumReducer = (state, action) => {
         ...state,
         draggedIdx: action.payload,
       };
+    // In your reducer:
+    case "TOGGLE_ALBUM_FORM":
+      return { ...state, showForm: !state.showForm };
 
     default:
       return state;

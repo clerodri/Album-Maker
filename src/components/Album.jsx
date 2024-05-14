@@ -1,11 +1,12 @@
 import { useDropzone } from "react-dropzone";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AlbumContext } from "../AlbumContext";
-import { Link } from "react-router-dom";
-import Form from "../pages/Form";
+import codingImage from "../images/coding.png";
+import UserData from "./UserData";
+
 export function Album() {
   const { state, dispatch } = useContext(AlbumContext);
-
+  const [showForm, setShowForm] = useState(false);
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     noClick: state.album.length > 0,
@@ -26,17 +27,25 @@ export function Album() {
       payload: { draggedIdx: state.draggedIdx, dropIndex },
     });
   };
-
+  const handleContinue = () => {
+    if (state.album.length > 0) {
+      setShowForm(true);
+    }
+  };
+  if (showForm) {
+    return <UserData />;
+  }
   return (
-    <div className="layout" {...getRootProps()}>
+    <div>
       <div className="navBar">
+        <img src={codingImage} alt="coding-img" />
         <h1 className="name-app">Album Maker</h1>
-        <button>
-          <Link>Continuar</Link>
-        </button>
+        <button onClick={handleContinue}>Continuar</button>
       </div>
-      <input {...getInputProps()} />
-      <ImagesList handleDragStart={onDragStart} handleDrop={onDrop} />
+      <div className="layout" {...getRootProps()}>
+        <input {...getInputProps()} />
+        <ImagesList handleDragStart={onDragStart} handleDrop={onDrop} />
+      </div>
     </div>
   );
 }
@@ -66,7 +75,11 @@ function ImagesList({ handleDragStart, handleDrop }) {
   const { state } = useContext(AlbumContext);
 
   if (!state.album.length) {
-    return <div>No images found. Please upload some pictures.</div>;
+    return (
+      <div className="info-text">
+        ---- Arrastre imagenes para mostrar. ------
+      </div>
+    );
   }
   return (
     <div className="grid-container">
