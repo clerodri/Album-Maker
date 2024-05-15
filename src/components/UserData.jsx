@@ -1,56 +1,49 @@
 import { React, useState } from "react";
 import BillForm from "./BillForm";
 import DeliveryForm from "./DeliveryForm";
-import ResumeUser from "./ResumenUser";
+import { useNavigate } from "react-router-dom";
 import "../css/UserForm.css";
+import ResumenUser from "./ResumenUser";
+
 export function UserData() {
-  const [showDelivery, setshowDelivery] = useState(true);
-  const [showResume, setResume] = useState(false);
-  const [billFormData, setBillFormData] = useState({
-    names_bill: "",
-    address_bill: "",
-    ruc_bill: "",
-    ciudad_bill: "",
-    pais_bill: "",
-    telefono_bill: "",
-    email_bill: "",
-    sameInfoForDelivery: false,
-  });
+  const navigate = useNavigate();
+  const [showDataDelivery, setShowDataDelivery] = useState(false);
 
-  const [deliveryFormData, setDeliveryFormData] = useState({
-    destinatario: "",
-    direccion: "",
-    pais: "",
-    provincia: "",
-    email: "",
-    telefono: "",
-  });
-
-  const handleDelivery = (newValue) => {
-    setshowDelivery(!newValue);
+  const handleCheckDelivery = () => {
+    setShowDataDelivery(!showDataDelivery);
   };
+
   const handleResume = () => {
-    setResume(true);
+    navigate("/album/resumen", { state: { showDataDelivery } });
   };
-  if (showResume) {
-    return <ResumeUser dataForm={{ ...billFormData, ...deliveryFormData }} />;
-  }
+  console.log(showDataDelivery);
+  const handleBack = () => {
+    navigate("/");
+  };
+
   return (
     <div className="root_data">
+      <div>
+        <button className="comeback-btn" onClick={handleBack}>
+          Regresar
+        </button>
+      </div>
       <div className="layout_data">
-        <BillForm
-          delivery={handleDelivery}
-          form={billFormData}
-          setFormData={setBillFormData}
-        />
-        {showDelivery && (
-          <DeliveryForm
-            deliveryData={deliveryFormData}
-            setDeliveryData={setDeliveryFormData}
-          />
-        )}
+        <BillForm />
+        {!showDataDelivery && <DeliveryForm />}
       </div>
       <div>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              name="sameInfoForDelivery"
+              checked={showDataDelivery}
+              onChange={handleCheckDelivery}
+            />
+            Utilizar mismos datos para entrega y facturacion?
+          </label>
+        </div>
         <button className="btn_resume" onClick={handleResume}>
           Resumen del Pedido
         </button>

@@ -1,22 +1,16 @@
 import React, { useState } from "react";
-
-export function BillForm({ form, setFormData, delivery }) {
+import { useUserData } from "../UserDataContext";
+export function BillForm({}) {
+  const { state, dispatch } = useUserData();
   const [errors, setErrors] = useState({ email: "" });
 
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
+    const { name, value } = e.target;
 
-    setFormData({
-      ...form,
-      [name]: newValue,
+    dispatch({
+      type: "UPDATE_BILL_DATA",
+      payload: { ...state.billData, [name]: value },
     });
-
-    // Check if the checkbox for same info was toggled and use the callback
-    if (name === "sameInfoForDelivery") {
-      delivery(checked); // Call the parent callback function
-    }
-
     if (name === "email") {
       setErrors({
         ...errors,
@@ -30,26 +24,16 @@ export function BillForm({ form, setFormData, delivery }) {
     return emailRegex.test(email);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (errors.email) {
-      alert("Please provide a valid email");
-      return;
-    }
-    console.log(form);
-    // Proceed to the next step
-  };
-
   return (
     <div className="form-container">
       <h1>Datos de Facturacion</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div>
           <label>Nombres:</label>
           <input
             type="text"
             name="names_bill"
-            value={form.names_bill}
+            value={state?.billData.names_bill || ""}
             onChange={handleInputChange}
             required
           />
@@ -60,7 +44,7 @@ export function BillForm({ form, setFormData, delivery }) {
           <input
             type="text"
             name="address_bill"
-            value={form.address_bill}
+            value={state?.billData.address_bill || ""}
             onChange={handleInputChange}
             required
           />
@@ -71,7 +55,7 @@ export function BillForm({ form, setFormData, delivery }) {
           <input
             type="text"
             name="ruc_bill"
-            value={form.ruc_bill}
+            value={state?.billData.ruc_bill || ""}
             onChange={handleInputChange}
             required
           />
@@ -82,7 +66,7 @@ export function BillForm({ form, setFormData, delivery }) {
           <input
             type="text"
             name="ciudad_bill"
-            value={form.ciudad_bill}
+            value={state?.billData.ciudad_bill || ""}
             onChange={handleInputChange}
             required
           />
@@ -93,7 +77,7 @@ export function BillForm({ form, setFormData, delivery }) {
           <input
             type="text"
             name="pais_bill"
-            value={form.pais_bill}
+            value={state?.billData.pais_bill || ""}
             onChange={handleInputChange}
             required
           />
@@ -104,7 +88,7 @@ export function BillForm({ form, setFormData, delivery }) {
           <input
             type="tel"
             name="telefono_bill"
-            value={form.telefono_bill}
+            value={state?.billData.telefono_bill || ""}
             onChange={handleInputChange}
             required
           />
@@ -115,25 +99,13 @@ export function BillForm({ form, setFormData, delivery }) {
           <input
             type="email"
             name="email_bill"
-            value={form.email_bill}
+            value={state?.billData.email_bill || ""}
             onChange={handleInputChange}
             required
           />
           {errors.email_bill && (
             <p style={{ color: "red" }}>{errors.email_bill}</p>
           )}
-        </div>
-
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              name="sameInfoForDelivery"
-              checked={form.sameInfoForDelivery}
-              onChange={handleInputChange}
-            />
-            Utilizar mismos datos para entrega y facturacion?
-          </label>
         </div>
       </form>
     </div>

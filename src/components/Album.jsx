@@ -1,12 +1,12 @@
 import { useDropzone } from "react-dropzone";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AlbumContext } from "../AlbumContext";
 import codingImage from "../images/coding.png";
-import UserData from "./UserData";
+import { useNavigate } from "react-router-dom";
 
 export function Album() {
+  const navigate = useNavigate();
   const { state, dispatch } = useContext(AlbumContext);
-  const [showForm, setShowForm] = useState(false);
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     noClick: state.album.length > 0,
@@ -29,12 +29,10 @@ export function Album() {
   };
   const handleContinue = () => {
     if (state.album.length > 0) {
-      setShowForm(true);
+      navigate("/album/userdata");
     }
   };
-  if (showForm) {
-    return <UserData />;
-  }
+
   return (
     <div>
       <div className="navBar">

@@ -17,6 +17,25 @@
   align-items: center;
   height: 100vh;
 }
+.navBar_resumen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; /* Ensure the navbar spans the full width */
+}
+
+.navBar_resumen button {
+  margin-left: 20px; /* Give some space from the left edge */
+}
+
+.navBar_resumen h1 {
+  flex-grow: 1; /* Allows the h1 to take up any remaining space */
+  text-align: center; /* Center the text within the h1 space */
+}
+
+.navBar_resumen button:first-child {
+  flex-grow: 0; /* Prevent the button from growing and keep it on the left */
+}
 
 .resume-grid {
   display: grid;

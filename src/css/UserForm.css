@@ -8,6 +8,7 @@
   background-color: #007bff;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #ccc;
+  margin-left: 40%;
 }
 .layout_data {
   display: flex;
@@ -87,4 +88,21 @@ p.error-message {
     padding: 1rem;
     margin: 1rem;
   }
+}
+
+.comeback-btn {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  margin: 5%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.comeback-btn button:hover {
+  background-color: #0056b3;
 }

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
+import { useUserData } from "../UserDataContext";
 
-export function DeliveryForm({ deliveryData, setDeliveryData }) {
+export function DeliveryForm({}) {
+  const { state, dispatch } = useUserData();
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDeliveryData((deliveryData) => ({
-      ...deliveryData,
-      [name]: value,
-    }));
+    dispatch({
+      type: "UPDATE_DELIVERY_DATA",
+      payload: { ...state.deliveryData, [name]: value },
+    });
   };
 
   return (
@@ -18,7 +20,7 @@ export function DeliveryForm({ deliveryData, setDeliveryData }) {
           <input
             type="text"
             name="destinatario"
-            value={deliveryData.destinatario}
+            value={state?.deliveryData.destinatario || ""}
             onChange={handleChange}
             required
           />
@@ -28,7 +30,7 @@ export function DeliveryForm({ deliveryData, setDeliveryData }) {
           <input
             type="text"
             name="direccion"
-            value={deliveryData.direccion}
+            value={state?.deliveryData.direccion || ""}
             onChange={handleChange}
             required
           />
@@ -38,7 +40,7 @@ export function DeliveryForm({ deliveryData, setDeliveryData }) {
           <input
             type="text"
             name="pais"
-            value={deliveryData.pais}
+            value={state?.deliveryData.pais || ""}
             onChange={handleChange}
             required
           />
@@ -48,7 +50,7 @@ export function DeliveryForm({ deliveryData, setDeliveryData }) {
           <input
             type="text"
             name="provincia"
-            value={deliveryData.provincia}
+            value={state?.deliveryData.provincia || ""}
             onChange={handleChange}
             required
           />
@@ -58,7 +60,7 @@ export function DeliveryForm({ deliveryData, setDeliveryData }) {
           <input
             type="email"
             name="email"
-            value={deliveryData.email}
+            value={state?.deliveryData.email || ""}
             onChange={handleChange}
             required
           />
@@ -68,7 +70,7 @@ export function DeliveryForm({ deliveryData, setDeliveryData }) {
           <input
             type="tel"
             name="telefono"
-            value={deliveryData.telefono}
+            value={state?.deliveryData.telefono || ""}
             onChange={handleChange}
             required
           />
