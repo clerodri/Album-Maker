@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { useUserData } from "../UserDataContext";
 export function BillForm({}) {
   const { state, dispatch } = useUserData();
-  const [errors, setErrors] = useState({ email: "" });
+  const [errors, setErrors] = useState({
+    email_bill: "",
+    ruc: "",
+    telefono: "",
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -11,7 +15,8 @@ export function BillForm({}) {
       type: "UPDATE_BILL_DATA",
       payload: { ...state.billData, [name]: value },
     });
-    if (name === "email") {
+
+    if (name === "email_bill") {
       setErrors({
         ...errors,
         email: validateEmail(value) ? "" : "Invalid email format",
