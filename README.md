@@ -3,13 +3,11 @@
 # ALBUM MAKER
 
 This project is a React frontend application that features several reusable components designed to manage user data and album display. Below are the details of the components and instructions on how to use them in your project.
-## Available Scripts
 
-In the project directory, you can run:
 
-### `Components`
+# Main Components
 
-Album.jsx
+### `Album.jsx`
 This component is responsible for displaying an album UI where users can view photos or media content. It can be customized to fetch album data from various sources by passing the appropriate props.
 
 Props:
