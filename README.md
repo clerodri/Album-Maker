@@ -36,7 +36,7 @@ onEdit: Function to handle editing user data.
 
 To integrate these components into your React application, follow these steps:
 1. Clone the repository:
-      git clone https://github.com/your-repository-url.git
+      git clone [https://github.com/your-repository-url.git](https://github.com/clerodri/Album-Maker.git)
 2. Install the required dependencies:
       npm install
 3. Start the development server:
