@@ -1,12 +1,11 @@
-# Getting Started with Create React App
+# React Frontend Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+This project is a React frontend application that features several reusable components designed to manage user data and album display. Below are the details of the components and instructions on how to use them in your project.
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `Components`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
