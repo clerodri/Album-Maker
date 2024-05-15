@@ -1,9 +1,12 @@
-export const initialState = {
+import React, { createContext, useContext, useReducer } from "react";
+
+export const AlbumContext = createContext(null);
+
+const initialState = {
   album: [],
   showForm: false,
   draggedIdx: null,
 };
-
 const albumReducer = (state, action) => {
   switch (action.type) {
     case "ADD_IMAGES":
@@ -53,4 +56,22 @@ const albumReducer = (state, action) => {
   }
 };
 
-export default albumReducer;
+export const AlbumProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(albumReducer, initialState);
+
+  return (
+    <AlbumContext.Provider value={{ state, dispatch }}>
+      {children}
+    </AlbumContext.Provider>
+  );
+};
+
+export function useAlbumContext() {
+  const context = useContext(AlbumContext);
+  if (!context) {
+    throw new Error(
+      "useAlbumContext must be used within a AlbumContextProvider"
+    );
+  }
+  return context;
+}

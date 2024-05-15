@@ -123,3 +123,18 @@ p.error-message {
   margin-left: 25%;
   font-size: 1.5rem;
 }
+.dark-theme {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  background-color: #333333;
+  color: whitesmoke;
+}
+
+.light-theme {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  background-color: whitesmoke;
+  color: #333333;
+}

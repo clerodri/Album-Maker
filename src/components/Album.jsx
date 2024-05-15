@@ -1,12 +1,15 @@
 import { useDropzone } from "react-dropzone";
-import { useContext } from "react";
-import { AlbumContext } from "../AlbumContext";
+import { useAlbumContext } from "../contexts/AlbumContext";
 import codingImage from "../images/coding.png";
 import { useNavigate } from "react-router-dom";
+import { useThemeContext } from "../contexts/theme-context";
 
 export function Album() {
+  const { theme, toggleTheme } = useThemeContext();
+  const { state, dispatch } = useAlbumContext();
+
   const navigate = useNavigate();
-  const { state, dispatch } = useContext(AlbumContext);
+
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     noClick: state.album.length > 0,
@@ -39,8 +42,9 @@ export function Album() {
         <img src={codingImage} alt="coding-img" />
         <h1 className="name-app">Album Maker</h1>
         <button onClick={handleContinue}>Continuar</button>
+        <button onClick={toggleTheme}>THEME</button>
       </div>
-      <div className="layout" {...getRootProps()}>
+      <div className={`${theme}-theme`} {...getRootProps()}>
         <input {...getInputProps()} />
         <ImagesList handleDragStart={onDragStart} handleDrop={onDrop} />
       </div>
@@ -70,7 +74,7 @@ function ImageItem({ file, idx, onDragStart, onDrop }) {
 }
 
 function ImagesList({ handleDragStart, handleDrop }) {
-  const { state } = useContext(AlbumContext);
+  const { state } = useAlbumContext();
 
   if (!state.album.length) {
     return (

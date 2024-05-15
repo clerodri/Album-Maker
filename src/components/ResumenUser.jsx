@@ -1,9 +1,9 @@
 import React from "react";
 import "../css/ResumenUser.css";
-import { useContext, useState, useEffect } from "react";
-import { AlbumContext } from "../AlbumContext";
+import { useState, useEffect } from "react";
+import { useAlbumContext } from "../contexts/AlbumContext";
 import { useNavigate } from "react-router-dom";
-import { useUserData } from "../UserDataContext";
+import { useUserData } from "../contexts/UserDataContext";
 import { useLocation } from "react-router-dom";
 export function ResumenUser() {
   const location = useLocation();
@@ -52,7 +52,7 @@ function ResumeItem({ file, idx }) {
 }
 
 function ResumeList() {
-  const { state } = useContext(AlbumContext);
+  const { state } = useAlbumContext();
 
   return (
     <div className="resume-grid">
@@ -66,19 +66,16 @@ function ResumeList() {
 function mergeData(data) {
   const { billData, deliveryData } = data;
 
-  // Create a new object merging the two data sets
   const newState = {
     state: {
       billData: {
-        ...billData, // Spread existing billData
-        // Add specific overrides or additional fields if necessary
+        ...billData,
       },
       deliveryData: {
-        // Spread existing deliveryData
-        destinatario: billData.names_bill, // Copy from billData
+        destinatario: billData.names_bill,
         direccion: billData.address_bill,
-        provincia: billData.ciudad_bill, // Assuming a mistake in the description; copying ciudad from ciudad_bill
-        pais: billData.pais_bill, // Optionally copying pais, even though the example left it empty
+        provincia: billData.ciudad_bill,
+        pais: billData.pais_bill,
         email: billData.email_bill,
         telefono: billData.telefono_bill,
       },
@@ -89,7 +86,7 @@ function mergeData(data) {
 }
 
 function ResumeForm({ flag }) {
-  const { state, dispatch } = useUserData();
+  const { state } = useUserData();
   const [displayData, setDisplayData] = useState({
     billData: state.billData,
     deliveryData: state.deliveryData,
@@ -97,11 +94,9 @@ function ResumeForm({ flag }) {
 
   useEffect(() => {
     if (flag) {
-      // Merge billData into deliveryData when flag is false
       const newData = mergeData(state);
       setDisplayData(newData.state);
     } else {
-      // Use original state data when flag is true
       setDisplayData({
         billData: state.billData,
         deliveryData: state.deliveryData,

@@ -3,8 +3,9 @@ import BillForm from "./BillForm";
 import DeliveryForm from "./DeliveryForm";
 import { useNavigate } from "react-router-dom";
 import "../css/UserForm.css";
-
+import { useThemeContext } from "../contexts/theme-context";
 export function UserData() {
+  const { theme } = useThemeContext();
   const navigate = useNavigate();
   const [showDataDelivery, setShowDataDelivery] = useState(false);
 
@@ -21,7 +22,7 @@ export function UserData() {
   };
 
   return (
-    <div className="root_data">
+    <div className={`${theme}-theme`}>
       <div className="btn-wrapper">
         <button className="comeback-btn" onClick={handleBack}>
           Regresar

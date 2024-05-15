@@ -5,7 +5,6 @@
 }
 
 .grid-container {
-  background-color: rgb(255, 196, 196);
   display: grid;
   grid-template-columns: auto auto auto auto;
   align-items: center;
@@ -66,4 +65,17 @@
 .info-text {
   color: darkred;
   font-size: 1.3rem;
+}
+.dark-theme {
+  background-color: #333333;
+  color: whitesmoke;
+  height: 80vh;
+  padding: 30px;
+}
+
+.light-theme {
+  color: #333333;
+  background-color: rgb(255, 196, 196);
+  height: 80vh;
+  padding: 30px;
 }

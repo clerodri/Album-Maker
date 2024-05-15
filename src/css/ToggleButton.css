@@ -1,0 +1,19 @@
+.toggle-button {
+  padding: 10px 10px;
+  font-size: 10px;
+  color: #7f4a4a;
+  background-color: #555;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button.active {
+  background-color: #dae2da; /* Green background when active */
+}
+
+.toggle-button:not(.active):hover {
+  background-color: #452f2f; /* Slightly darker grey on hover */
+}
