@@ -3,6 +3,7 @@ import { useAlbumContext } from "../contexts/AlbumContext";
 import codingImage from "../images/coding.png";
 import { useNavigate } from "react-router-dom";
 import { useThemeContext } from "../contexts/theme-context";
+import "../css/Album.css";
 
 export function Album() {
   const { theme, toggleTheme } = useThemeContext();
@@ -37,14 +38,18 @@ export function Album() {
   };
 
   return (
-    <div>
-      <div className="navBar">
-        <img src={codingImage} alt="coding-img" />
-        <h1 className="name-app">Album Maker</h1>
-        <button onClick={handleContinue}>Continuar</button>
-        <button onClick={toggleTheme}>THEME</button>
+    <div className="album-root">
+      <div className={`${theme}-albumHeader`}>
+        <img className="image-header" src={codingImage} alt="coding-img" />
+        <h1 className="title-header">Album Maker</h1>
+        <button className="btn-continue" onClick={handleContinue}>
+          Continuar
+        </button>
+        <button className="btn-theme" onClick={toggleTheme}>
+          THEME
+        </button>
       </div>
-      <div className={`${theme}-theme`} {...getRootProps()}>
+      <div className="album-main" {...getRootProps()}>
         <input {...getInputProps()} />
         <ImagesList handleDragStart={onDragStart} handleDrop={onDrop} />
       </div>
@@ -75,7 +80,7 @@ function ImageItem({ file, idx, onDragStart, onDrop }) {
 
 function ImagesList({ handleDragStart, handleDrop }) {
   const { state } = useAlbumContext();
-
+  const { theme } = useThemeContext();
   if (!state.album.length) {
     return (
       <div className="info-text">
@@ -84,7 +89,7 @@ function ImagesList({ handleDragStart, handleDrop }) {
     );
   }
   return (
-    <div className="grid-container">
+    <div className={`${theme}-grid-container`}>
       {state.album.map((file, index) => (
         <ImageItem
           key={index}

@@ -1,34 +1,10 @@
-/* FormStyles.css */
-.root_data {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-}
-.btn_resume {
-  font-size: 1.5rem;
-  background-color: #007bff;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #ccc;
-  margin-left: 40%;
-}
-.btn-wrapper {
-  height: 100px;
-  margin-bottom: 60px;
-}
-
-.layout_data {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: baseline;
-}
 .form-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 2rem auto;
+  justify-content: baseline;
+  align-items: flex-start;
   padding: 2.5rem;
-  width: 30%;
+  width: 25%;
   background-color: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -100,41 +76,46 @@ p.error-message {
   }
 }
 
-.comeback-btn {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  margin: 5%;
-  padding: 10px 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-.comeback-btn button:hover {
-  background-color: #0056b3;
+.form-display-container {
+  margin: 2%;
+  padding: 2%;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  height: 30%;
+  width: 25%;
 }
 
-.deliveryMessage {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-style: italic;
-  margin-left: 25%;
-  font-size: 1.5rem;
-}
-.dark-theme {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  background-color: #333333;
-  color: whitesmoke;
+.form-display-container h2 {
+  text-align: center;
+  color: #333;
 }
 
-.light-theme {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  background-color: whitesmoke;
-  color: #333333;
+.form-display div {
+  display: grid;
+  grid-template-columns: minmax(150px, auto) 1fr;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.form-display .label {
+  font-weight: bold;
+  text-align: right;
+  padding-right: 10px; /* Ensure the label is right aligned with some space */
+}
+
+.form-display .value {
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .form-display div {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .form-display .label {
+    text-align: center;
+    padding-right: 0;
+  }
 }

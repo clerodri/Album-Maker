@@ -3,24 +3,26 @@ body {
   box-sizing: border-box;
   padding: 0;
 }
-.resume-root {
+.user-root {
   display: flex;
   flex-direction: column;
 }
 
-.light-header {
+.light-userheader {
+  display: flex;
   background-color: #fff;
   padding: 2%;
-  display: flex;
+  gap: 5%;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: larger;
   width: 100%;
   color: rgba(1, 1, 90, 0.833);
 }
-.dark-header {
+
+.dark-userheader {
+  display: flex;
   background-color: #333333;
   padding: 2%;
-  display: flex;
   gap: 5%;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: larger;
@@ -28,46 +30,6 @@ body {
   color: whitesmoke;
 }
 
-.light-mainResume {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  background-color: aliceblue;
-}
-
-.dark-mainResume {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  background-color: #333333;
-}
-
-.footerResume {
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-}
-.layout-grid {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  gap: 1%;
-  padding: 2%;
-}
-.resume-button {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  height: 50px;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
 .title-header {
   margin-left: 7%;
 }
@@ -75,4 +37,44 @@ body {
   height: 100px;
   width: 200px;
   border-radius: 4px;
+}
+
+.light-button {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  margin: 5%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.light-userMain {
+  display: flex;
+  padding: 2%;
+  width: 100%;
+  justify-content: center;
+  background-color: aliceblue;
+  gap: 10%;
+}
+.dark-userMain {
+  display: flex;
+  padding: 2%;
+  width: 100%;
+  justify-content: center;
+  background-color: #333333;
+  gap: 10%;
+}
+
+.user-footer {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bold;
+  font-size: 1.5rem;
+  width: 100%;
+  align-items: center;
+  margin-inline-start: 20%;
 }

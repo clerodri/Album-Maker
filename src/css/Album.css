@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+.album-root {
+  display: flex;
+  flex-direction: column;
+}
+
+.light-albumHeader {
+  display: flex;
+  background-color: #fff;
+  padding: 2%;
+  gap: 5%;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: larger;
+  width: 100%;
+  color: rgba(1, 1, 90, 0.833);
+}
+.dark-albumHeader {
+  display: flex;
+  background-color: #333333;
+  padding: 2%;
+  gap: 5%;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: larger;
+  width: 100%;
+  color: #fff;
+}
+
+.album-main {
+  height: 500px;
+}
+
+.light-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  gap: 30px;
+  padding: 1%;
+  background-color: aliceblue;
+}
+.dark-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  gap: 30px;
+  padding: 1%;
+  background-color: #333333;
+}
+.title-header {
+  margin-left: 7%;
+}
+.image-header {
+  height: 100px;
+  width: 200px;
+  border-radius: 4px;
+}
+
+.btn-continue {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  margin: 5%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.btn-theme {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  margin: 5%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.info-text {
+  display: flex;
+  justify-content: center;
+  color: darkred;
+  font-size: 1.5rem;
+}
+
+.image-square {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.image-square:hover,
+.image-square:active {
+  background-color: #f0f0f0; /* Light grey background to indicate active/draggable area */
+}
+
+.image-square.dragging {
+  opacity: 0.5; /* Make the dragging cell semi-transparent */
+}

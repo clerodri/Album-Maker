@@ -1,11 +1,15 @@
 import React from "react";
 import "../css/ResumenUser.css";
+import "../css/Form.css";
 import { useState, useEffect } from "react";
 import { useAlbumContext } from "../contexts/AlbumContext";
 import { useNavigate } from "react-router-dom";
 import { useUserData } from "../contexts/UserDataContext";
 import { useLocation } from "react-router-dom";
+import codingImage from "../images/coding.png";
+import { useThemeContext } from "../contexts/theme-context";
 export function ResumenUser() {
+  const { theme } = useThemeContext();
   const location = useLocation();
   const { showDataDelivery } = location.state || {};
   const navigate = useNavigate();
@@ -18,19 +22,22 @@ export function ResumenUser() {
     navigate("/album/userdata");
   };
   return (
-    <div className="root_resumen">
-      <div className="navBar_resumen">
-        <button onClick={handleBack}>Regresar</button>
-        <h1>Resumen del Pedido</h1>
+    <div className="resume-root">
+      <div className={`${theme}-header`}>
+        <img className="image-header" src={codingImage} alt="codigoBootscamp" />
+        <button className="light-button" onClick={handleBack}>
+          Regresar
+        </button>
+        <h1 className="title-header">Resumen del Pedido</h1>
       </div>
-      <div className="layout_resumen">
-        <div>
-          <ResumeList />
-        </div>
+      <div className={`${theme}-mainResume`}>
+        <ResumeList />
         <ResumeForm flag={showDataDelivery} />
       </div>
-      <div className="btn_finalizar">
-        <button onClick={handleFinalizar}>Finalizar pedido</button>
+      <div className="footerResume">
+        <button className="resume-button" onClick={handleFinalizar}>
+          Finalizar pedido
+        </button>
       </div>
     </div>
   );
@@ -55,7 +62,7 @@ function ResumeList() {
   const { state } = useAlbumContext();
 
   return (
-    <div className="resume-grid">
+    <div className="layout-grid">
       {state.album.map((file, index) => (
         <ResumeItem key={index} file={file} idx={index} />
       ))}
