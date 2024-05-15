@@ -1,13 +1,15 @@
-# Coding Bootcamps ESPOL - React Frontend Application 
+# Coding Bootcamps ESPOL - React Frontend Application
 
 # ALBUM MAKER
 
 This project is a React frontend application that features several reusable components designed to manage user data and album display. Below are the details of the components and instructions on how to use them in your project.
 
+URL AWS: [http://maker-app.s3-website-us-east-1.amazonaws.com](http://maker-app.s3-website-us-east-1.amazonaws.com/)
 
 # Main Components
 
 ### `Album.jsx`
+
 This component is responsible for displaying an album UI where users can view photos or media content. It can be customized to fetch album data from various sources by passing the appropriate props.
 
 Props:
@@ -23,6 +25,7 @@ Sub-Components:
 
 BillForm.jsx: Handles user billing information.
 DeliveryForm.jsx: Manages user delivery details.
+
 ### `ResumeUser.jsx`
 
 This component provides a summary view of the user's data collected from the UserData.jsx component. It's useful for previewing information before final submission.
@@ -35,16 +38,19 @@ onEdit: Function to handle editing user data.
 ### `Installation`
 
 To integrate these components into your React application, follow these steps:
+
 1. Clone the repository:
-      git clone [https://github.com/clerodri](https://github.com/clerodri/Album-Maker.git)
+   git clone [https://github.com/clerodri](https://github.com/clerodri/Album-Maker.git)
 2. Install the required dependencies:
-      npm install
+   npm install
 3. Start the development server:
-     npm start
-## Contributing 
+   npm start
+
+## Contributing
+
 Contributions are always welcome! If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
 ### License
-Distributed under the MIT License. See LICENSE for more information.
 
+Distributed under the MIT License. See LICENSE for more information.

@@ -31,7 +31,7 @@ export function BillForm({}) {
 
   return (
     <div className="form-container">
-      <h1>Datos de Facturacion</h1>
+      <h1>Facturacion</h1>
       <form>
         <div>
           <label>Nombres:</label>

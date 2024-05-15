@@ -13,7 +13,7 @@ export function DeliveryForm({}) {
 
   return (
     <div className="form-container">
-      <h1>Datos de Envio</h1>
+      <h1>Envio</h1>
       <form>
         <div>
           <label>Destinatario:</label>
