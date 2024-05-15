@@ -1,4 +1,6 @@
-# React Frontend Application
+# Coding Bootcamps ESPOL - React Frontend Application 
+
+# ALBUM MAKER
 
 This project is a React frontend application that features several reusable components designed to manage user data and album display. Below are the details of the components and instructions on how to use them in your project.
 ## Available Scripts
