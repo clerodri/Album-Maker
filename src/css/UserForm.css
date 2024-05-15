@@ -2,6 +2,7 @@
 .root_data {
   display: flex;
   flex-direction: column;
+  gap: 0px;
 }
 .btn_resume {
   font-size: 1.5rem;
@@ -10,8 +11,14 @@
   color: #ccc;
   margin-left: 40%;
 }
+.btn-wrapper {
+  height: 100px;
+  margin-bottom: 60px;
+}
+
 .layout_data {
   display: flex;
+  height: 100vh;
   justify-content: center;
   align-items: baseline;
 }
@@ -20,7 +27,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 2.5rem;
   width: 30%;
   background-color: #f8f9fa;
   border-radius: 8px;
@@ -30,6 +37,9 @@
 
 .form-container label {
   display: block;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
   color: #333;
 }
@@ -95,7 +105,7 @@ p.error-message {
   font-style: italic;
   font-size: 1.5rem;
   margin: 5%;
-  padding: 10px 20px;
+  padding: 10px 10px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -105,4 +115,11 @@ p.error-message {
 }
 .comeback-btn button:hover {
   background-color: #0056b3;
+}
+
+.deliveryMessage {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  margin-left: 25%;
+  font-size: 1.5rem;
 }

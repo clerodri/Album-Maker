@@ -21,11 +21,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%; /* Ensure the navbar spans the full width */
+  width: 80%;
+  margin-top: 50px; /* Ensure the navbar spans the full width */
+  height: 100px;
 }
-
-.navBar_resumen button {
-  margin-left: 20px; /* Give some space from the left edge */
+.btn_finalizar {
+  margin-left: 40%;
 }
 
 .navBar_resumen h1 {

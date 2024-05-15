@@ -29,7 +29,9 @@ export function ResumenUser() {
         </div>
         <ResumeForm flag={showDataDelivery} />
       </div>
-      <button onClick={handleFinalizar}>Finalizar pedido</button>
+      <div className="btn_finalizar">
+        <button onClick={handleFinalizar}>Finalizar pedido</button>
+      </div>
     </div>
   );
 }

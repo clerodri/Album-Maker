@@ -3,7 +3,6 @@ import BillForm from "./BillForm";
 import DeliveryForm from "./DeliveryForm";
 import { useNavigate } from "react-router-dom";
 import "../css/UserForm.css";
-import ResumenUser from "./ResumenUser";
 
 export function UserData() {
   const navigate = useNavigate();
@@ -16,14 +15,14 @@ export function UserData() {
   const handleResume = () => {
     navigate("/album/resumen", { state: { showDataDelivery } });
   };
-  console.log(showDataDelivery);
+
   const handleBack = () => {
     navigate("/");
   };
 
   return (
     <div className="root_data">
-      <div>
+      <div className="btn-wrapper">
         <button className="comeback-btn" onClick={handleBack}>
           Regresar
         </button>
@@ -33,7 +32,7 @@ export function UserData() {
         {!showDataDelivery && <DeliveryForm />}
       </div>
       <div>
-        <div>
+        <div className="deliveryMessage">
           <label>
             <input
               type="checkbox"
@@ -41,7 +40,7 @@ export function UserData() {
               checked={showDataDelivery}
               onChange={handleCheckDelivery}
             />
-            Utilizar mismos datos para entrega y facturacion?
+            Utilizar los mismos datos de facturacion para datos de envio?
           </label>
         </div>
         <button className="btn_resume" onClick={handleResume}>
