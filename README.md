@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Coding Bootcamps ESPOL - React Frontend Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ALBUM MAKER
 
-## Available Scripts
+This project is a React frontend application that features several reusable components designed to manage user data and album display. Below are the details of the components and instructions on how to use them in your project.
 
-In the project directory, you can run:
+# Main Components
 
-### `npm start`
+### `Album.jsx`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This component is responsible for displaying an album UI where users can view photos or media content. It can be customized to fetch album data from various sources by passing the appropriate props.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Props:
 
-### `npm test`
+albumId: The unique identifier for the album to fetch data for.
+onSelect: Function to handle the event when a specific item in the album is selected.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `UserData.jsx`
 
-### `npm run build`
+UserData.jsx acts as a container for user-specific forms, including billing and delivery information. It is based on BillForm.jsx and DeliveryForm.jsx, providing a structured way to gather and manage user data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Sub-Components:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+BillForm.jsx: Handles user billing information.
+DeliveryForm.jsx: Manages user delivery details.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `ResumeUser.jsx`
 
-### `npm run eject`
+This component provides a summary view of the user's data collected from the UserData.jsx component. It's useful for previewing information before final submission.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Props:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+userData: Object containing the user's data.
+onEdit: Function to handle editing user data.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `Installation`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To integrate these components into your React application, follow these steps:
 
-## Learn More
+1. Clone the repository:
+   git clone [https://github.com/clerodri](https://github.com/clerodri/Album-Maker.git)
+2. Install the required dependencies:
+   npm install
+3. Start the development server:
+   npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are always welcome! If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-### Code Splitting
+### License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Distributed under the MIT License. See LICENSE for more information.
